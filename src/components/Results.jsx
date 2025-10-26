@@ -2,8 +2,13 @@ import { calculateInvestmentResults, formatter } from '../util/investment.js';
 
 
 export default function Results({ input }) {
-  const results = [];
+  const results = []; 
   calculateInvestmentResults(input, results);
+
+  if (results.length === 0) {
+    return <p className='center' style={{color : 'red'}}>Invalid Input</p>
+  }
+
   const initialInvestment =
     results[0].valueEndOfYear -
     results[0].interest -
